@@ -4,9 +4,8 @@ var router = express.Router();
 module.exports = function(app){
 
 	//server side route for the angularjs partials
-	app.get('/views/*', function(req, res){
-		console.log(req.params[0])
-		res.render('../../public/views/' + req.params[0]);
+	app.get('/partials/:name', function(req, res){
+		res.render('partials/' + req.params.name);
 	})
 
 	// not found error for undefined API routes
@@ -16,6 +15,6 @@ module.exports = function(app){
 
 	// everything else handled by this route
 	app.get('*', function(req, res){
-		res.render('index', { title: 'My title'})
-	})
+		res.render('layout');
+	});
 };

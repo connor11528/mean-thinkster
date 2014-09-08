@@ -1,0 +1,11 @@
+h1 this is post.jade
+
+.page-header: h3
+	a(ng-if='post.link', ng-href='{{post.link}}') {{ post.title }}
+	span(ng-if='!post.link') {{ post.title }}
+
+div(ng-repeat='comment in post.comments | orderBy: "-upvotes"')
+	span.glyphicon.glyphicon-thumbs-up(ng-click='incrementUpvotes(comment)')
+		{{ comment.upvotes }} - by {{ comment.author }}
+	span(style='font-size:20px; margin-left:10px;')
+		{{ comment.body }}
