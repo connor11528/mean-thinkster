@@ -8,7 +8,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 		.state('home', {
 			url: '/',
 			templateUrl: 'partials/home',
-			controller: 'MainCtrl'
+			controller: 'MainCtrl',
+			resolve: {
+				postPromise: function(Post){
+					return Post.getAll();
+				}
+			}
 		})
 		.state('about', {
 			url: '/about',

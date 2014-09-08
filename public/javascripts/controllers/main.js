@@ -2,18 +2,16 @@ app.controller('MainCtrl', function($scope, Post){
 	$scope.posts = Post.posts;
 
 	$scope.incrementUpvotes = function(post){
-		post.upvotes += 1;
+		Post.upvote(post);
 	}
 
 	$scope.addPost = function(){
 		// validation
 		if($scope.title === '') { return; }
 
-		$scope.posts.push({
+		Post.create({
 		  title: $scope.title,
-		  link: $scope.link,
-		  upvotes: 0,
-		  comments: []
+		  link: $scope.link
 		});
 		
 		$scope.title = '';
